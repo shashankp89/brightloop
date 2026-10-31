@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load ui %}
+{% block title %}Products · Brightloop{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="page-title mb-0">Products</h1>
+  {% if user.is_admin %}<a class="btn btn-primary" href="{% url 'catalog:product_create' %}">New product</a>{% endif %}
+</div>
+<form class="mb-3" method="get">
+  <div class="input-group" style="max-width: 360px">
+    <input class="form-control" name="q" value="{{ q }}" placeholder="Search products">
+    <button class="btn btn-outline-secondary">Search</button>
+  </div>
+</form>
+<div class="card">
+  <table class="table table-hover mb-0">
+    <thead>
+      <tr><th>Name</th><th>Type</th><th class="text-end">Sales price</th><th class="text-end">Cost</th><th>Tax</th><th>Variants</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      {% for product in object_list %}
+        <tr>
+          <td><a href="{% url 'catalog:product_detail' product.pk %}">{{ product.name }}</a></td>
+          <td>{{ product.get_type_display }}</td>
+          <td class="text-end">{{ product.sales_price|money }}</td>
+          <td class="text-end">{{ product.cost_price|money }}</td>
+          <td>{{ product.tax.name|default:"—" }}</td>
+          <td>{{ product.variant_count }}</td>
+          <td>{% if product.is_active %}<span class="badge text-bg-success">Active</span>{% else %}<span class="badge text-bg-secondary">Archived</span>{% endif %}</td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="7" class="text-center text-muted py-4">No products found.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% include "partials/pagination.html" %}
+{% endblock %}

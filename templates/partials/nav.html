@@ -1,7 +1,13 @@
 <nav class="nav flex-column">
   <a class="nav-link {% if request.resolver_match.app_name == 'core' %}active{% endif %}" href="{% url 'core:home' %}">Home</a>
+  {% if user.is_team %}
+    <div class="nav-heading">Catalog</div>
+    <a class="nav-link {% if 'product' in request.resolver_match.url_name %}active{% endif %}" href="{% url 'catalog:product_list' %}">Products</a>
+    <a class="nav-link {% if 'plan' in request.resolver_match.url_name %}active{% endif %}" href="{% url 'catalog:plan_list' %}">Plans</a>
+    <a class="nav-link {% if 'tax' in request.resolver_match.url_name %}active{% endif %}" href="{% url 'catalog:tax_list' %}">Taxes</a>
+  {% endif %}
   {% if user.is_admin %}
     <div class="nav-heading">Administration</div>
-    <a class="nav-link {% if request.resolver_match.url_name == 'staff_list' or request.resolver_match.url_name == 'staff_create' %}active{% endif %}" href="{% url 'accounts:staff_list' %}">Staff</a>
+    <a class="nav-link {% if 'staff' in request.resolver_match.url_name %}active{% endif %}" href="{% url 'accounts:staff_list' %}">Staff</a>
   {% endif %}
 </nav>

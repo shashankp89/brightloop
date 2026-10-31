@@ -104,3 +104,4 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "billing@brightloop.local")
 
 PAGE_SIZE = 25
+CURRENCY_SYMBOL = "₹"

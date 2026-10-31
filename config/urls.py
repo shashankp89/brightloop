@@ -5,5 +5,6 @@ handler404 = "core.views.not_found"
 
 urlpatterns = [
     path("accounts/", include("accounts.urls")),
+    path("catalog/", include("catalog.urls")),
     path("", include("core.urls")),
 ]

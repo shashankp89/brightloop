@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Taxes · Brightloop{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="page-title mb-0">Taxes</h1>
+  {% if user.is_admin %}<a class="btn btn-primary" href="{% url 'catalog:tax_create' %}">New tax</a>{% endif %}
+</div>
+<div class="card">
+  <table class="table mb-0">
+    <thead><tr><th>Name</th><th>Rate</th><th>Status</th><th></th></tr></thead>
+    <tbody>
+      {% for tax in object_list %}
+        <tr>
+          <td>{{ tax.name }}</td>
+          <td>{{ tax.percent|floatformat:"-2" }}%</td>
+          <td>{% if tax.is_active %}<span class="badge text-bg-success">Active</span>{% else %}<span class="badge text-bg-secondary">Inactive</span>{% endif %}</td>
+          <td class="text-end">{% if user.is_admin %}<a href="{% url 'catalog:tax_update' tax.pk %}">Edit</a>{% endif %}</td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="4" class="text-center text-muted py-4">No taxes yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% include "partials/pagination.html" %}
+{% endblock %}
