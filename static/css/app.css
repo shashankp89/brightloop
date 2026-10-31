@@ -1,0 +1,95 @@
+:root {
+  --bl-primary: #3b4cca;
+  --bl-primary-dark: #2c3aa3;
+  --bl-bg: #f5f6fa;
+  --bl-sidebar: #1d2140;
+  --bl-text: #1f2333;
+}
+
+body {
+  background: var(--bl-bg);
+  color: var(--bl-text);
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--bl-primary);
+  --bs-btn-border-color: var(--bl-primary);
+  --bs-btn-hover-bg: var(--bl-primary-dark);
+  --bs-btn-hover-border-color: var(--bl-primary-dark);
+  --bs-btn-active-bg: var(--bl-primary-dark);
+  --bs-btn-active-border-color: var(--bl-primary-dark);
+}
+
+a { color: var(--bl-primary); }
+
+.app-shell { display: flex; min-height: 100vh; }
+
+.sidebar {
+  width: 230px;
+  flex-shrink: 0;
+  background: var(--bl-sidebar);
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .brand {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+
+.sidebar .nav-link {
+  color: #b9bdd9;
+  border-radius: 6px;
+  padding: 0.45rem 0.75rem;
+}
+
+.sidebar .nav-link:hover { color: #fff; background: rgba(255, 255, 255, 0.07); }
+.sidebar .nav-link.active { color: #fff; background: var(--bl-primary); }
+
+.nav-heading {
+  color: #7f84ab;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 1rem 0.75rem 0.3rem;
+}
+
+.sidebar-foot {
+  margin-top: auto;
+  color: #b9bdd9;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-foot .btn-link { color: #fff; text-decoration: none; }
+
+.content { flex: 1; padding: 1.75rem 2rem; min-width: 0; }
+
+.page-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 1.25rem; }
+
+.auth-wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.auth-card { width: 100%; max-width: 420px; border: 0; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); }
+
+.card { border: 0; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06); }
+
+.table > :not(caption) > * > * { padding: 0.65rem 0.75rem; }
+
+.status-badge { font-weight: 500; text-transform: capitalize; }
+
+@media (max-width: 768px) {
+  .app-shell { flex-direction: column; }
+  .sidebar { width: 100%; }
+}
