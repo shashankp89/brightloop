@@ -1,0 +1,13 @@
+{% extends "auth_base.html" %}
+{% block title %}Create account · Brightloop{% endblock %}
+{% block auth %}
+<div class="card auth-card p-4">
+  <h1 class="h4 mb-3">Create your account</h1>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {% include "partials/form_fields.html" %}
+    <button class="btn btn-primary w-100">Create account</button>
+  </form>
+  <div class="mt-3 small">Already registered? <a href="{% url 'accounts:login' %}">Sign in</a></div>
+</div>
+{% endblock %}

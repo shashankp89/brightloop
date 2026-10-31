@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block body %}
+<main class="auth-wrap">
+  <div class="auth-brand">Brightloop</div>
+  {% include "partials/messages.html" %}
+  {% block auth %}{% endblock %}
+</main>
+{% endblock %}

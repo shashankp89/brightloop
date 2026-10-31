@@ -81,6 +81,8 @@ a { color: var(--bl-primary); }
   padding: 1.5rem;
 }
 
+.auth-brand { font-size: 1.6rem; font-weight: 600; color: var(--bl-primary); margin-bottom: 1.25rem; }
+
 .auth-card { width: 100%; max-width: 420px; border: 0; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); }
 
 .card { border: 0; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06); }

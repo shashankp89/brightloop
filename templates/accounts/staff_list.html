@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Staff · Brightloop{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="page-title mb-0">Staff</h1>
+  <a class="btn btn-primary" href="{% url 'accounts:staff_create' %}">Add staff member</a>
+</div>
+<div class="card">
+  <table class="table mb-0">
+    <thead>
+      <tr><th>Name</th><th>Email</th><th>Role</th><th>Joined</th></tr>
+    </thead>
+    <tbody>
+      {% for member in members %}
+        <tr>
+          <td>{{ member.name }}</td>
+          <td>{{ member.email }}</td>
+          <td>{{ member.get_role_display }}</td>
+          <td>{{ member.date_joined|date:"d M Y" }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

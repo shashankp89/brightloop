@@ -8,6 +8,7 @@
   <link href="{% static 'css/app.css' %}" rel="stylesheet">
 </head>
 <body>
+{% block body %}
 {% if user.is_authenticated %}
   <div class="app-shell">
     <aside class="sidebar">
@@ -32,5 +33,6 @@
     {% block auth %}{% endblock %}
   </main>
 {% endif %}
+{% endblock %}
 </body>
 </html>
